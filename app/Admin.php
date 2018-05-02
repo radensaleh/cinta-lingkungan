@@ -2,16 +2,15 @@
 
 namespace App;
 
-//use Illuminate\Notifications\Notifiable;
-use Illuminate\Database\Eloquent\Model;
-//use Illuminate\Contracts\Auth\Authenticatable;
-//use Illuminate\Foundation\Auth\Admin as Authenticatable;
-
-class Admin extends Model
+use Illuminate\Notifications\Notifiable;
+//use Illuminate\Database\Eloquent\Model;
+//use Illuminate\Contracts\Auth\Authenticatable as Model;
+use Illuminate\Foundation\Auth\User as Authenticatable;
+class Admin extends Authenticatable
 {
-  protected $table = 'admin';
-    //use Notifiable, Authenticatable;
+    use Notifiable;
 
+    protected $table = 'admin';
     /**
      * The attributes that are mass assignable.
      *
@@ -30,8 +29,8 @@ class Admin extends Model
         'password', 'remember_token',
     ];
 
-    public function setPasswordAttribute($value)
-    {
-      $this->attributes['password'] = bcrypt($value);
-    }
+//    public function setPasswordAttribute($value)
+//    {
+//      $this->attributes['password'] = bcrypt($value);
+//    }
 }

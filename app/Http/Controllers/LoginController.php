@@ -14,16 +14,11 @@ class LoginController extends Controller
   public function doLogin(){
 
     $auth = auth()->guard('webAdmin');
-
     $credentials = [
       'email'     => Input::get('email'),
       'password' => Input::get('password'),
     ];
 
-      // $attm = Auth::attempt(array(
-      //   'name'    => $name,
-      //   'password' => $password
-      // ));
 
     if( $auth->attempt($credentials) ){
         return response()->json([
